@@ -30,7 +30,7 @@
 2. Underneath the url bar there is a Body tab for sending the data withing the request
    Select the "raw" content format and on the left dropdown select "application/json" as content type and send followin json:
    - { 
-        "url": "https://www.nsoft.com/job-application/?job_id=7661"
+        "url": "https://www.nsoft.com/stories/vision-surveillance-software-interview/"
      }
 3. After you click the Send button, you will get formatted response containing Id, URL that you sent, and short representation of the url
 4. ShortURL contains the url of the subscriber service so you can click on the link from response, and it will open new tab in postman
