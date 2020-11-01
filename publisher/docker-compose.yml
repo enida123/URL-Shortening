@@ -1,0 +1,42 @@
+version: '3'
+services: 
+  redis:
+        image: redis
+        hostname: redis
+        command: redis-server /usr/local/etc/redis.conf/redis.conf
+        volumes:
+          - ./redis.conf:/usr/local/etc/redis.conf/redis.conf
+        ports:
+          - "6379:6379"
+  rmq:
+    image: rabbitmq:3-management
+    container_name: rmq
+    hostname: rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
+  mysql:
+    image: mysql:5.7.22 
+    container_name: mysql1
+    hostname: mysql1
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./src/migrations/db.sql:/docker-entrypoint-initdb.d/db.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=shortenerdb
+    ports:
+      - 3306:3306
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    links:
+      - mysql
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+    volumes:
+      - /sessions
+    ports:
+      - 8080:80
