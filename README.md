@@ -1,7 +1,6 @@
 # Shorten url 
 
-<b>Follow the instructions on how to get the project up and running.</b><br>
-<b>I would recommend testing it on MacOS also, in case rabbitmq causes some problems on Windows</b><br>
+
 
 1. Clone the project in some folder on your machine
 2. Navigate to producer using command line tools and run:<br>
